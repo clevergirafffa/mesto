@@ -1,2 +1,24 @@
 @import url('../vendor/normalize.css');
 @import url('../vendor/fonts/fonts.css');
+@import url('../blocks/page/page.css');
+@import url('../blocks/page/__container/page__container.css');
+
+@import url('../blocks/footer/__copyright/footer__copyright.css');
+
+@import url('../blocks/header/__logo/header__logo.css');
+@import url('../blocks/header/__divider/header__divider.css');
+
+@import url('../blocks/profile/profile.css');
+@import url('../blocks/profile/__avatar/profile__avatar.css');
+@import url('../blocks/profile/__name/profile__name.css');
+@import url('../blocks/profile/__occupation/profile__occupation.css');
+@import url('../blocks/profile/__editbutton/profile__editbutton.css');
+@import url('../blocks/profile/__addbutton/profile__addbutton.css');
+@import url('../blocks/profile/__data/profile__data.css');
+
+@import url('../blocks/gallery/__rectangle/gallery__rectangle.css');
+@import url('../blocks/gallery/__item/gallery__item.css');
+@import url('../blocks/gallery/__title/gallery__title.css');
+@import url('../blocks/gallery/__likebutton/gallery__likebutton.css');
+@import url('../blocks/gallery/__grid/gallery__grid.css');
+@import url('../blocks/gallery/gallery.css');

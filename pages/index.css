@@ -22,3 +22,8 @@
 @import url('../blocks/gallery/__likebutton/gallery__likebutton.css');
 @import url('../blocks/gallery/__grid/gallery__grid.css');
 @import url('../blocks/gallery/gallery.css');
+
+@import url('../blocks/popup/__close/popup__close.css');
+@import url('../blocks/popup/__text/popup__text.css');
+@import url('../blocks/popup/__title/popup__title.css');
+@import url('../blocks/popup/__content/popup__content.css');

@@ -1,3 +1,7 @@
-.gallery__likebutton{
+.gallery__likebutton {
     margin: 0 30px 0 auto;
+}
+
+.gallery__likebutton:hover {
+    opacity: 0.5;
 }

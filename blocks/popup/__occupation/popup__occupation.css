@@ -1,0 +1,15 @@
+.popup__occupation {
+    border-style: none;
+    outline: none;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    margin-left: 36px;
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__occupation {
+        margin-left: 22px;
+    }
+}

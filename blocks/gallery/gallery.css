@@ -1,3 +1,11 @@
 .gallery {
     margin-top: 47.25px;
 }
+
+@media screen and (max-width: 767px) {
+    .gallery {
+        margin-top: 36px;
+    }
+}
+
+

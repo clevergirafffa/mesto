@@ -1,17 +1,17 @@
-.profile__namedata {
+.profile__name {
     font-weight: 500;
     line-height: 48px;
     font-size: 42px;
-    margin: 62px 0 0 0;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 @media screen and (max-width: 767px) {
-    .profile__namedata {
+    .profile__name {
         font-size: 27px;
         line-height: 33px;
-        margin-top: 22px;
     }
 }

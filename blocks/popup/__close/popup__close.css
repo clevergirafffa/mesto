@@ -2,10 +2,11 @@
     position: relative;
     width: 32px;
     height: 32px;
-    left: 430px;
-    top: -30px;
     background: transparent url('../../../images/closeIcon.svg');
     border: none;
+    padding: 0;
+    top: -175px;
+    left: 235px;
 }
 
 .popup__close:hover {

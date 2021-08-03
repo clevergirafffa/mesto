@@ -1,15 +1,21 @@
 .popup__occupation {
     border-style: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     outline: none;
     font-size: 14px;
     line-height: 17px;
     font-weight: 400;
     margin-left: 36px;
     margin-top: 30px;
+    padding-bottom: 13px;
+    margin-right: 36px;
+
 }
 
 @media screen and (max-width: 767px) {
     .popup__occupation {
         margin-left: 22px;
+        max-width: 238px;
+
     }
 }

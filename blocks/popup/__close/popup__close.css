@@ -5,8 +5,8 @@
     background: transparent url('../../../images/closeIcon.svg');
     border: none;
     padding: 0;
-    top: -175px;
-    left: 235px;
+    top: -343px;
+    right : -428px;
 }
 
 .popup__close:hover {
@@ -18,7 +18,7 @@
         background: transparent url('../../../images/closeButtonSmall.svg');
         width: 20px;
         height: 20px;
-        left: 260px;
-        top: -25px;
+        right: -260px;
+        top: -335px;
     }
 }

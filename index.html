@@ -16,11 +16,11 @@
       <img src="images/kusto.jpg" alt="Портрет Кусто" class="profile__avatar">
       <div class="profile__namedata">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <button class="profile__editbutton" type="button"></button>
+        <button class="profile__editbutton" type="button" aria-label="Кнопка Редактировать"></button>
         <br>
         <p class="profile__occupation">Исследователь океана</p>
       </div>
-      <button class="profile__addbutton" type="button"></button>
+      <button class="profile__addbutton" type="button" aria-label="Кнопка Добавить"></button>
     </section>
     <section class="gallery">
       <ul class="gallery__grid">
@@ -85,12 +85,12 @@
     <p class="footer__copyright">© 2021 Mesto</p>
   </footer>
   <div class="popup">
-      <button class="popup__close" type="button"></button>
       <form id='profile-edit' name="profile-edit-form" class="popup__content">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input type="text" class="popup__name" id="name"  size="43">
-        <input type="text" class="popup__occupation" id="occupation" size="43">
+        <input type="text" class="popup__input popup__input_type_name" id="name" name="name" size="43">
+        <input type="text" class="popup__input popup__input_type_occupation" id="occupation" name="occupation" size="43">
         <button type="submit" class="popup__save" value="Сохранить">Сохранить</button>
+        <button class="popup__close" type="button"></button>
       </form>
   </div>
 </div>

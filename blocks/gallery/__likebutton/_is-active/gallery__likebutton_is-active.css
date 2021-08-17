@@ -1,8 +1,8 @@
-.gallery__likebutton {
+.gallery__likebutton_is-active {
     width: 22px;
     height: 19px;
     display: block;
-    background: url("../../../images/heart.svg") no-repeat top center;
+    background: url("../../../../images/heartblack.svg") no-repeat top center;
     padding: 0;
     border: none;
     margin-top: 31px;
@@ -10,6 +10,6 @@
     margin-left: auto;
 }
 
-.gallery__likebutton:hover {
+.gallery__likebutton_is-active:hover {
     opacity: 0.5;
 }

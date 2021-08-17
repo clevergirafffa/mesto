@@ -7,7 +7,7 @@
     padding-bottom: 31px;
     margin-left: 21px;
     margin-bottom: 0;
-    display: flex;
+    max-width: 200px;
     justify-content: space-between;
     text-overflow: ellipsis;
     white-space: nowrap;

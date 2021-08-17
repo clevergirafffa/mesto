@@ -1,17 +1,19 @@
-.popup {
-    visibility:hidden;
-    opacity:0;
-    transition:visibility 0.3s linear,opacity 0.3s linear;
-    display: flex;
+.gallery__popup{
+
+    /*background-image: url('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg');
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
-    z-index: 1;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     width: 100%;
     box-sizing: border-box;
+    position: absolute;
+    z-index: 10;*/
+    max-width: 75vw;
+    max-height: 75vh;
+
 }

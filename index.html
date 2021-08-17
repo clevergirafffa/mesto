@@ -24,67 +24,36 @@
     </section>
     <section class="gallery">
       <ul class="gallery__grid">
-        <li class="gallery__item">
-          <div class="gallery__rectangle">
-            <img class="gallery__image" src="images/karachaevsk.png" alt="Карачаевск"/>
-            <h2 class="gallery__title">
-              Карачаевск
-              <button type="button" class="gallery__likebutton"></button>
-            </h2>
-          </div>
-        </li>
-        <li class="gallery__item">
-          <div class="gallery__rectangle">
-            <img class="gallery__image" src="images/elbrus.png" alt="Гора Эльбрус"/>
-            <h2 class="gallery__title">
-              Гора Эльбрус
-              <button type="button" class="gallery__likebutton"></button>
-            </h2>
-          </div>
-        </li>
-        <li class="gallery__item">
-          <div class="gallery__rectangle">
-            <img class="gallery__image" src="images/dombai.png" alt="Домбай"/>
-            <h2 class="gallery__title">
-              Домбай
-              <button type="button" class="gallery__likebutton"></button>
-            </h2>
-          </div>
-        </li>
-        <li class="gallery__item">
-          <div class="gallery__rectangle">
-            <img class="gallery__image" src="images/elbrus.png" alt="Гора Эльбрус"/>
-            <h2 class="gallery__title">
-              Гора Эльбрус
-              <button type="button" class="gallery__likebutton"></button>
-            </h2>
-          </div>
-        </li>
-        <li class="gallery__item">
-          <div class="gallery__rectangle">
-            <img class="gallery__image" src="images/dombai.png" alt="Домбай"/>
-            <h2 class="gallery__title">
-              Домбай
-              <button type="button" class="gallery__likebutton"></button>
-            </h2>
-          </div>
-        </li>
-        <li class="gallery__item">
-          <div class="gallery__rectangle">
-            <img class="gallery__image" src="images/karachaevsk.png" alt="Карачаевск"/>
-            <h2 class="gallery__title">
-              Карачаево-Че...
-              <button type="button" class="gallery__likebutton"></button>
-            </h2>
-          </div>
-        </li>
       </ul>
     </section>
   </main>
+  <template class="card-template" id="card-template">
+    <li class="gallery__item">
+      <div class="gallery__rectangle">
+        <button type="button" class="gallery__deletebutton"></button>
+        <img class="gallery__image" src="images/karachaevsk.png" alt="Карачаевск"/>
+        <div class="popup">
+          <div class="popup__locationhelper">
+            <button class="gallery__close" type="button"></button>
+            <img class="gallery__popup" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"/>
+            <p class="popup__place-title"></p>
+          </div>
+        </div>
+        <div class="gallery__info">
+          <h2 class="gallery__title">
+            Карачаево-Че...
+          </h2>
+          <button type="button" class="gallery__likebutton"></button>
+        </div>
+
+      </div>
+    </li>
+  </template>
   <footer class="footer">
     <p class="footer__copyright">© 2021 Mesto</p>
   </footer>
-  <div class="popup">
+
+  <div class="popup" id="edit">
       <form id='profile-edit' name="profile-edit-form" class="popup__content">
         <h3 class="popup__title">Редактировать профиль</h3>
         <input type="text" class="popup__input popup__input_type_name" id="name" name="name" size="43">
@@ -92,6 +61,16 @@
         <button type="submit" class="popup__save" value="Сохранить">Сохранить</button>
         <button class="popup__close" type="button"></button>
       </form>
+  </div>
+
+  <div class="popup" id="add">
+    <form id='add-card' name="add-card" class="popup__content">
+      <h3 class="popup__title">Новое место</h3>
+      <input type="text" class="popup__input popup__input_type_place-name" id="place-name" name="place-name" size="43" placeholder="Название">
+      <input type="text" class="popup__input popup__input_type_place-link" id="place-link" name="place-link" size="43" placeholder="Ссылка на картинку">
+       <button type="submit" class="add__save" value="Сохранить">Создать</button>
+       <button class="popup__close add__close" type="button"></button>
+    </form>
   </div>
 </div>
 <script src="scripts/index.js"></script>

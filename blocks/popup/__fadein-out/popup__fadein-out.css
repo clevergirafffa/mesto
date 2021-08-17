@@ -1,4 +1,4 @@
-.popup_is-opened {
+.popup__fadein-out{
     opacity: 1;
     visibility: visible;
 }

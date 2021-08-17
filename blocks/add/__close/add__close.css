@@ -2,3 +2,13 @@
     top: -325px;
     right : -435px;
 }
+
+@media screen and (max-width: 767px) {
+    .add__close {
+        background: transparent url('../../../images/closeButtonSmall.svg');
+        width: 20px;
+        height: 20px;
+        right: -260px;
+        top: -335px;
+    }
+}

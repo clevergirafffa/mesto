@@ -1,6 +1,6 @@
-const closeButton = document.querySelector('.popup__close');
+const closeButton = document.querySelector('.edit__close');
 const editButton = document.querySelector('.profile__editbutton');
-const popup = document.querySelector('#edit');
+const popupEdit = document.querySelector('#edit');
 const addCard = document.querySelector('#add');
 const addCloseButton = document.querySelector('.add__close');
 const addSaveButton = document.querySelector('.add__save');
@@ -8,12 +8,13 @@ const profileNameField = document.querySelector('.profile__name');
 const profileOccupationField = document.querySelector('.profile__occupation');
 const popupNameField = document.querySelector('.popup__input_type_name');
 const popupOccupationField = document.querySelector('.popup__input_type_occupation');
-const form = document.getElementById('profile-edit');
-let name = document.querySelector('#name');
-let occupation = document.querySelector('#occupation');
-let placeName = document.querySelector('#place-name');
-let placeLink = document.querySelector('#place-link');
+const formEdit = document.getElementById('profile-edit');
+const name = document.querySelector('#name');
+const occupation = document.querySelector('#occupation');
+const placeName = document.querySelector('#place-name');
+const placeLink = document.querySelector('#place-link');
 const addForm = document.getElementById('add-card');
+const closeGalleryPopup = document.querySelector('.gallery__close');
 
 //**************** New code for Sprint 5***********************//
 const initialCards = [
@@ -48,11 +49,7 @@ const galleryGrid = document.querySelector('.gallery__grid');
 const addButon = document.querySelector('.profile__addbutton');
 
 function initCards(item, index, arr){
-    const newCard = cardTemplate.content.firstElementChild.cloneNode(true);
-    newCard.querySelector('.gallery__title').innerText = item.name;
-    newCard.querySelector('.gallery__image').setAttribute('src', item.link);
-    newCard.querySelector('.gallery__popup').setAttribute('src', item.link);
-    newCard.querySelector('.popup__place-title').innerText = item.name;
+    const newCard = createNewCard(item.name, item.link);
     addListeners(newCard);
     galleryGrid.appendChild(newCard);
 }
@@ -60,22 +57,27 @@ function initCards(item, index, arr){
 initialCards.forEach(initCards);
 
 addButon.addEventListener('click', (e) =>{
-  addCard.classList.toggle('popup_is-opened');
+    openPopup(addCard);
 })
 
 addCloseButton.addEventListener('click', (e) =>{
-    addCard.classList.toggle('popup_is-opened');
+    closePopup(addCard);
 })
+
+function createNewCard (name, link){
+    const newCard = cardTemplate.content.firstElementChild.cloneNode(true);
+    newCard.querySelector('.gallery__title').textContent = name;
+    newCard.querySelector('.gallery__image').setAttribute('src', link);
+    newCard.querySelector('.gallery__image').setAttribute('alt', name);
+    return newCard;
+}
 
 function addSubmitHandler(evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    const newCard = cardTemplate.content.firstElementChild.cloneNode(true);
-    newCard.querySelector('.gallery__title').innerText = placeName.value;
-    newCard.querySelector('.gallery__image').setAttribute('src', placeLink.value);
-    newCard.querySelector('.popup__place-title').innerText = placeName.value;
+    const newCard = createNewCard(placeName.value, placeLink.value);
     addListeners(newCard);
     galleryGrid.prepend(newCard);
-    toggleAddForm();
+    closePopup(popupEdit);
 }
 
 function addListeners(newCard){
@@ -86,40 +88,51 @@ function addListeners(newCard){
         e.target.classList.toggle('gallery__likebutton_is-active');
     })
     newCard.querySelector('.gallery__image').addEventListener('click', (e) => {
-        e.target.nextElementSibling.classList.toggle('popup_is-opened');
-    })
-    newCard.querySelector('.gallery__close').addEventListener('click', (e) => {
-        e.target.closest('.popup').classList.toggle('popup_is-opened');
+        openPopup(document.querySelector('#show'));
+        document.querySelector('.gallery__popup').setAttribute('src', e.target.getAttribute('src'));
+        document.querySelector('.popup__place-title').innerText = e.target.getAttribute('alt');
     })
 }
 
+closeGalleryPopup.addEventListener('click', (e) => {
+    closePopup(e.target.closest('#show'));
+})
+
 addForm.addEventListener('submit', addSubmitHandler);
+
+function closePopup(popup) {
+    popup.classList.remove('popup_is-opened');
+}
+
+function openPopup(popup) {
+    popup.classList.add('popup_is-opened');
+}
 
 //****************End of the new code for Sprint 5***********************//
 
 function copyInitialValuesAndOpenPopup(){
     popupNameField.setAttribute('value', profileNameField.textContent);
     popupOccupationField.setAttribute('value', profileOccupationField.textContent);
-    togglePopup();
+    openPopup(popupEdit);
 }
 
-function togglePopup() {
-    popup.classList.toggle('popup_is-opened');
-}
-
-function toggleAddForm() {
-    addCard.classList.toggle('popup_is-opened');
-}
-
-function formSubmitHandler(evt) {
+function handleSubmitForm(evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
     profileNameField.textContent = name.value;
     profileOccupationField.textContent = occupation.value;
-    togglePopup();
+    closePopup(popupEdit);
 }
 
-editButton.addEventListener("click", copyInitialValuesAndOpenPopup)
-closeButton.addEventListener("click", togglePopup)
-form.addEventListener('submit', formSubmitHandler);
+addSaveButton.addEventListener("click", (e) =>{
+    closePopup(addCard);
+})
+
+editButton.addEventListener("click", copyInitialValuesAndOpenPopup);
+formEdit.addEventListener('submit', handleSubmitForm);
+closeButton.addEventListener("click", (e) => {
+    closePopup(popupEdit);
+});
+
+
 
 

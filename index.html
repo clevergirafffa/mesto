@@ -32,20 +32,12 @@
       <div class="gallery__rectangle">
         <button type="button" class="gallery__deletebutton"></button>
         <img class="gallery__image" src="images/karachaevsk.png" alt="Карачаевск"/>
-        <div class="popup">
-          <div class="popup__locationhelper">
-            <button class="gallery__close" type="button"></button>
-            <img class="gallery__popup" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"/>
-            <p class="popup__place-title"></p>
-          </div>
-        </div>
         <div class="gallery__info">
           <h2 class="gallery__title">
             Карачаево-Че...
           </h2>
           <button type="button" class="gallery__likebutton"></button>
         </div>
-
       </div>
     </li>
   </template>
@@ -59,7 +51,7 @@
         <input type="text" class="popup__input popup__input_type_name" id="name" name="name" size="43">
         <input type="text" class="popup__input popup__input_type_occupation" id="occupation" name="occupation" size="43">
         <button type="submit" class="popup__save" value="Сохранить">Сохранить</button>
-        <button class="popup__close" type="button"></button>
+        <button class="popup__close edit__close" type="button"></button>
       </form>
   </div>
 
@@ -72,6 +64,16 @@
        <button class="popup__close add__close" type="button"></button>
     </form>
   </div>
+
+  <div class="popup" id="show">
+    <div class="popup__locationhelper">
+          <button class="gallery__close" type="button"></button>
+          <img class="gallery__popup" src="#"/>
+          <p class="popup__place-title"></p>
+          </div>
+    </div>
+  </div>
+
 </div>
 <script src="scripts/index.js"></script>
 </body>

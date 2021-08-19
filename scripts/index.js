@@ -15,6 +15,8 @@ const placeName = document.querySelector('#place-name');
 const placeLink = document.querySelector('#place-link');
 const addForm = document.getElementById('add-card');
 const closeGalleryPopup = document.querySelector('.gallery__close');
+const popupAlt =  document.querySelector('.popup__place-title');
+
 
 //**************** New code for Sprint 5***********************//
 const initialCards = [
@@ -50,7 +52,6 @@ const addButon = document.querySelector('.profile__addbutton');
 
 function initCards(item, index, arr){
     const newCard = createNewCard(item.name, item.link);
-    addListeners(newCard);
     galleryGrid.appendChild(newCard);
 }
 
@@ -69,13 +70,13 @@ function createNewCard (name, link){
     newCard.querySelector('.gallery__title').textContent = name;
     newCard.querySelector('.gallery__image').setAttribute('src', link);
     newCard.querySelector('.gallery__image').setAttribute('alt', name);
+    addListeners(newCard);
     return newCard;
 }
 
 function addSubmitHandler(evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
     const newCard = createNewCard(placeName.value, placeLink.value);
-    addListeners(newCard);
     galleryGrid.prepend(newCard);
     closePopup(popupEdit);
 }
@@ -90,7 +91,7 @@ function addListeners(newCard){
     newCard.querySelector('.gallery__image').addEventListener('click', (e) => {
         openPopup(document.querySelector('#show'));
         document.querySelector('.gallery__popup').setAttribute('src', e.target.getAttribute('src'));
-        document.querySelector('.popup__place-title').innerText = e.target.getAttribute('alt');
+        popupAlt.innerText = e.target.getAttribute('alt');
     })
 }
 

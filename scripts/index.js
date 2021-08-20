@@ -16,6 +16,8 @@ const placeLink = document.querySelector('#place-link');
 const addForm = document.getElementById('add-card');
 const closeGalleryPopup = document.querySelector('.gallery__close');
 const popupAlt =  document.querySelector('.popup__place-title');
+const galleryPopup = document.querySelector('.gallery__popup');
+const show = document.querySelector('#show');
 
 
 //**************** New code for Sprint 5***********************//
@@ -89,8 +91,8 @@ function addListeners(newCard){
         e.target.classList.toggle('gallery__likebutton_is-active');
     })
     newCard.querySelector('.gallery__image').addEventListener('click', (e) => {
-        openPopup(document.querySelector('#show'));
-        document.querySelector('.gallery__popup').setAttribute('src', e.target.getAttribute('src'));
+        openPopup(show);
+        galleryPopup.setAttribute('src', e.target.getAttribute('src'));
         popupAlt.innerText = e.target.getAttribute('alt');
     })
 }

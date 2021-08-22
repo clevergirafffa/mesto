@@ -1,6 +1,4 @@
 .add__close{
-    top: -325px;
-    right : -435px;
 }
 
 @media screen and (max-width: 767px) {
@@ -8,7 +6,7 @@
         background: transparent url('../../../images/closeButtonSmall.svg');
         width: 20px;
         height: 20px;
-        right: -260px;
-        top: -335px;
+        right: -3px;
+        top: -25px;
     }
 }

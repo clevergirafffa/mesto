@@ -46,21 +46,25 @@
   </footer>
 
   <div class="popup" id="edit">
-      <form id='profile-edit' name="profile-edit-form" class="popup__content">
+      <form id='profile-edit' name="profileEditForm" class="popup__content" novalidate>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input type="text" class="popup__input popup__input_type_name" id="name" name="name" size="43">
-        <input type="text" class="popup__input popup__input_type_occupation" id="occupation" name="occupation" size="43">
-        <button type="submit" class="popup__save" value="Сохранить">Сохранить</button>
+        <input type="text" class="popup__input popup__input_type_name" id="name" name="name" size="43" required minlength="2" maxlength="40">
+        <span id="name-error" class="error popup__error"></span>
+        <input type="text" class="popup__input popup__input_type_occupation" id="occupation" name="occupation" size="43" required minlength="2" maxlength="400">
+        <span id="occupation-error" class="error popup__error"></span>
+        <button type="submit" class="popup__save button" value="Сохранить">Сохранить</button>
         <button class="popup__close edit__close" type="button"></button>
       </form>
   </div>
 
   <div class="popup" id="add">
-    <form id='add-card' name="add-card" class="popup__content">
+    <form id='add-card' name="addCardForm" class="popup__content popup__locationhelper">
       <h3 class="popup__title">Новое место</h3>
-      <input type="text" class="popup__input popup__input_type_place-name" id="place-name" name="place-name" size="43" placeholder="Название">
-      <input type="text" class="popup__input popup__input_type_place-link" id="place-link" name="place-link" size="43" placeholder="Ссылка на картинку">
-       <button type="submit" class="add__save" value="Сохранить">Создать</button>
+      <input type="text" class="popup__input popup__input_type_place-name" id="place-name" name="place-name" size="43" placeholder="Название" required minlength="2" maxlength="30">
+      <span id="place-name-error" class="error popup__error"></span>
+      <input type="url" class="popup__input popup__input_type_place-link" id="place-link" name="place-link" size="43" placeholder="Ссылка на картинку" required>
+      <span id="place-link-error" class="error popup__error"></span>
+      <button type="submit" class="add__save button" value="Сохранить">Создать</button>
        <button class="popup__close add__close" type="button"></button>
     </form>
   </div>
@@ -76,5 +80,6 @@
 
 </div>
 <script src="scripts/index.js"></script>
+<script src="scripts/validate.js"></script>
 </body>
 </html>

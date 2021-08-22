@@ -10,9 +10,9 @@
     font-size: 18px;
     line-height: 22px;
     font-weight: 400;
-    margin: 48px 0 0px 36px;
-    padding: 0;
+    margin: 48px 0 37px 36px;
     border-style: none;
+    padding-bottom: 0;
 }
 
 .popup__save:hover {

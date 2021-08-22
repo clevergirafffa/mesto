@@ -18,8 +18,28 @@ const closeGalleryPopup = document.querySelector('.gallery__close');
 const popupAlt =  document.querySelector('.popup__place-title');
 const galleryPopup = document.querySelector('.gallery__popup');
 const show = document.querySelector('#show');
+const popupArray = Array.from(document.querySelectorAll('.popup'));
 
+//**************** New code for Sprint 6***********************//
+document.addEventListener('keydown', function(event){
+    if(event.key === "Escape"){
+        show.classList.remove('popup_is-opened');
+    }
+});
 
+popupArray.forEach(addCloseOverlayListeners);
+
+function addCloseOverlayListeners(){
+    addEventListener('click', function (evt) {
+        if (evt.target.classList.contains('popup')) {
+            console.log("insideif")
+            evt.stopImmediatePropagation();
+            evt.target.classList.remove('popup_is-opened');
+        }
+    })
+}
+
+//***********End of the new code for Sprint 6*******************//
 //**************** New code for Sprint 5***********************//
 const initialCards = [
     {
@@ -135,7 +155,6 @@ formEdit.addEventListener('submit', handleSubmitForm);
 closeButton.addEventListener("click", (e) => {
     closePopup(popupEdit);
 });
-
 
 
 

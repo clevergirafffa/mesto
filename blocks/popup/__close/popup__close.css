@@ -1,12 +1,12 @@
 .popup__close {
-    position: relative;
+    position: absolute;
     width: 32px;
     height: 32px;
     background: transparent url('../../../images/closeIcon.svg');
     border: none;
     padding: 0;
-    top: -317px;
-    right : -428px;
+    right: -38px;
+    top: -38px;
 }
 
 .popup__close:hover {
@@ -18,7 +18,7 @@
         background: transparent url('../../../images/closeButtonSmall.svg');
         width: 20px;
         height: 20px;
-        right: -260px;
-        top: -335px;
+        right: -3px;
+        top: -25px;
     }
 }

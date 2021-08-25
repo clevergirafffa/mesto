@@ -1,58 +1,71 @@
-const profileFormValidated = document.forms.profileEditForm;
-const addFormValidated = document.forms.addCardForm;
+//Доброе утро! Вроде бы сделала все) кроме пары мест замены блока add на save, потому что несмотря на кажущуюся идентичность содержимого
+//при попытке подмены все разваливается в мелкие лоскуты.
 
-//Здравствуйте! Извините пожалуйста за ошибки - очень пыталась успеть до дедлайна. С функцией enableValidation совсем непонятно что делать и куда ее запихнуть(
+const showInputError = (formElement, inputElement, errorMessage) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    errorElement.textContent = errorMessage;
 
-function isFieldValid(input){
-    input.setCustomValidity('');
-    return input.checkValidity();
+};
+
+const hideInputError = (formElement, inputElement) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    errorElement.textContent = '';
+};
+
+const checkInputValidity = (formElement, inputElement) => {
+    if (!inputElement.validity.valid) {
+        showInputError(formElement, inputElement, inputElement.validationMessage);
+    } else {
+        hideInputError(formElement, inputElement);
+    }
+};
+
+const setEventListeners = (formElement, inputSelector, submitButtonSelector, inactiveButtonClass) => {
+    const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+    const buttonElement = formElement.querySelector(submitButtonSelector);
+    toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+
+    inputList.forEach((inputElement) => {
+        inputElement.addEventListener('input', function () {
+            checkInputValidity(formElement, inputElement);
+            toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+        });
+    });
+};
+
+const enableValidation = (arg) => {
+    const formList = Array.from(document.querySelectorAll(arg.formSelector));
+    formList.forEach((formElement) => {
+        formElement.addEventListener('submit', function (evt) {
+            evt.preventDefault();
+        });
+        setEventListeners(formElement, arg.inputSelector, arg.submitButtonSelector, arg.inactiveButtonClass);
+    });
+};
+
+enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__button_disabled'
+});
+
+function hasInvalidInput(inputList){
+    return inputList.some((inputElement) => {
+        return !inputElement.validity.valid;
+    });
 }
 
-function validateField(input){
-    const errorElement = input.parentNode.querySelector(`#${input.id}-error`);
-    isFieldValid(input);
-    errorElement.innerText = input.validationMessage;
-
-}
-
-function setSubmitButtonState(button, state){
-    if(state){
-        button.removeAttribute('disabled');
-        button.classList.add('popup__save_valid');
-        button.classList.remove('popup__save_invalid');
+function toggleButtonState(inputList, buttonElement, inactiveButtonClass){
+    console.log(inactiveButtonClass);
+    if(hasInvalidInput(inputList)){
+        buttonElement.classList.add(inactiveButtonClass);
+        buttonElement.setAttribute('disabled', true);
     }
-    else{
-        button.setAttribute('disabled', true);
-        button.classList.remove('popup__save_valid');
-        button.classList.add('popup__save_invalid');
+    else {
+        buttonElement.classList.remove(inactiveButtonClass);
+        buttonElement.removeAttribute('disabled');
     }
 }
 
-function handlerInputForm(event){
-    const form = event.currentTarget;
-    const input = event.target;
-    const submitButton = form.querySelector('.button');
-    validateField(input);
-    if(form.checkValidity()){
-        setSubmitButtonState(submitButton, true);
-    }
-    else{
-        setSubmitButtonState(submitButton, false);
-    }
 
-}
-
-function sendForm(event){
-    event.preventDefault();
-    const form = event.currentTarget;
-    if(form.checkValidity()){
-        form.reset();
-    }
-
-}
-
-profileFormValidated.addEventListener('submit', sendForm);
-profileFormValidated.addEventListener('input', handlerInputForm, true);
-
-addFormValidated.addEventListener('submit', sendForm);
-addFormValidated.addEventListener('input', handlerInputForm, true);

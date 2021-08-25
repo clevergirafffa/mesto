@@ -2,8 +2,8 @@ const buttonClose = document.querySelector('.edit__close');
 const buttonEdit = document.querySelector('.profile__editbutton');
 const popupEdit = document.querySelector('#edit');
 const cardAdd = document.querySelector('#add');
-const buttonAddClose= document.querySelector('.add__close');
-const buttonAddSave = document.querySelector('.add__save');
+const buttonAddClose= document.querySelector('.popup__add-close');
+const buttonAddSave = document.querySelector('.popup__add-save');
 const profileNameField = document.querySelector('.profile__name');
 const profileOccupationField = document.querySelector('.profile__occupation');
 const popupNameField = document.querySelector('.popup__input_type_name');
@@ -126,7 +126,7 @@ formAdd.addEventListener('submit', addSubmitHandler);
 
 function closePopup(popup) {
     popup.classList.remove('popup_is-opened');
-    document.removeEventListener(addEscListener);
+    document.removeEventListener('keydown', addEscListener);
 
 }
 

@@ -45,9 +45,10 @@
 @import url('../blocks/popup/__error/popup__error.css');
 @import url('../blocks/popup/__gallery-close/popup__gallery-close.css');
 @import url('../blocks/popup/__gallery-popup/popup__gallery-popup.css');
-
+@import url('../blocks/popup/__add-save/popup__add-save.css');
+@import url('../blocks/popup/__add-close/popup__add-close.css');
 
 @import url('../blocks/add/add.css');
 @import url('../blocks/add/_is-opened/add_is-opened.css');
-@import url('../blocks/add/__save/add__save.css');
-@import url('../blocks/add/__close/add__close.css');
+@import url('../blocks/popup/__add-save/popup__add-save.css');
+@import url('../blocks/popup/__add-close/popup__add-close.css');

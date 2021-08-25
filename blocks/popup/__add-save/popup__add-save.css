@@ -1,4 +1,4 @@
-.add__save {
+.popup__add-save {
     position: relative;
     width: 358px;
     height: 50px;
@@ -15,12 +15,12 @@
     border-style: none;
 }
 
-.add__save:hover {
+.popup__add-save:hover {
     opacity: 0.8;
 }
 
 @media screen and (max-width: 767px) {
-    .add__save {
+    .popup__add-save {
         width: 238px;
         height: 46px;
         margin-left: 22px;

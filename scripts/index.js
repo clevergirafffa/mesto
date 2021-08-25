@@ -1,4 +1,4 @@
-const buttonClose = document.querySelector('.edit__close');
+const buttonClose = document.querySelector('.popup__edit-close');
 const buttonEdit = document.querySelector('.profile__editbutton');
 const popupEdit = document.querySelector('#edit');
 const cardAdd = document.querySelector('#add');

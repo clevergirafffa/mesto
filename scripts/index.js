@@ -14,9 +14,9 @@ const occupation = document.querySelector('#occupation');
 const placeName = document.querySelector('#place-name');
 const placeLink = document.querySelector('#place-link');
 const formAdd = document.getElementById('add-card');
-const galleryPopupClose = document.querySelector('.gallery__close');
+const galleryPopupClose = document.querySelector('.popup__gallery-close');
 const popupAlt =  document.querySelector('.popup__place-title');
-const galleryPopup = document.querySelector('.gallery__popup');
+const galleryPopup = document.querySelector('.popup__gallery-popup');
 const galleryShow = document.querySelector('#show');
 const popupArray = Array.from(document.querySelectorAll('.popup'));
 

@@ -1,3 +1,9 @@
+const show = document.querySelector('#show');
+const galleryPopup = document.querySelector('.popup__gallery-popup');
+const placeTitle = document.querySelector('.popup__place-title');
+
+import {openPopup} from "./index.js";
+
 export default class Card {
     constructor(data, selector) {
         this._name = data.name;
@@ -45,26 +51,10 @@ export default class Card {
     }
 
     _handleImageClick(e) {
-        this._openPopup(document.querySelector('#show'));
-        document.querySelector('.popup__gallery-popup').setAttribute('src', e.target.getAttribute('src'));
-        document.querySelector('.popup__place-title').innerText = e.target.getAttribute('alt');
+        openPopup(show);
+        galleryPopup.setAttribute('src', e.target.getAttribute('src'));
+        placeTitle.innerText = e.target.getAttribute('alt');
     }
-
-    _openPopup(popup) {
-        popup.classList.add('popup_is-opened');
-        document.addEventListener('keydown', this._addEscListener);
-    }
-
-    _addEscListener(event) {
-        if (event.key === "Escape") {
-            document.querySelector('#show').classList.remove('popup_is-opened');
-
-        }
-    }
-
 }
 
-/*function openPopup(popup) {
-    popup.classList.add('popup_is-opened');
-    document.addEventListener('keydown', addEscListener);
-}*/
+

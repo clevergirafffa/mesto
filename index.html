@@ -53,7 +53,7 @@
         <input type="text" class="popup__input popup__input_type_occupation" id="occupation" name="occupation" size="43" required minlength="2" maxlength="400">
         <span  class="occupation-error error popup__error"></span>
         <button type="submit" class="popup__button popup__save button popup__submit" value="Сохранить">Сохранить</button>
-        <button class="popup__close popup__edit-close" type="button"></button>
+        <button class="popup__close" type="button"></button>
       </form>
   </div>
 
@@ -65,13 +65,13 @@
         <input type="url" class="popup__input popup__input_type_place-link" id="place-link" name="place-link" size="43" placeholder="Ссылка на картинку" required>
         <span class="place-link-error error popup__error"></span>
         <button type="submit" class="popup__add-save button popup__submit" value="Сохранить">Создать</button>
-      <button class="popup__add-close popup__close" type="button"></button>
+      <button class="popup__close" type="button"></button>
     </form>
   </div>
 
   <div class="popup" id="show">
     <div class="popup__locationhelper">
-          <button class="popup__gallery-close" type="button"></button>
+          <button class="popup__close" type="button"></button>
           <img class="popup__gallery-popup" src="#"/>
           <p class="popup__place-title"></p>
           </div>
@@ -79,7 +79,6 @@
   </div>
 
 <script src="scripts/index.js" type="module"></script>
-
 <script src="scripts/FormValidator.js" type="module"></script>
 </body>
 </html>

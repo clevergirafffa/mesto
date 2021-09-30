@@ -1,8 +1,6 @@
-const buttonClose = document.querySelector('.popup__edit-close');
 const buttonEdit = document.querySelector('.profile__editbutton');
 const popupEdit = document.querySelector('#edit');
 const cardAdd = document.querySelector('#add');
-const buttonAddClose = document.querySelector('.popup__add-close');
 const buttonAddSave = document.querySelector('.popup__add-save');
 const profileNameField = document.querySelector('.profile__name');
 const profileOccupationField = document.querySelector('.profile__occupation');
@@ -14,28 +12,41 @@ const occupation = document.querySelector('#occupation');
 const placeName = document.querySelector('#place-name');
 const placeLink = document.querySelector('#place-link');
 const formAdd = document.getElementById('add-card');
-const galleryPopupClose = document.querySelector('.popup__gallery-close');
-const popupAlt = document.querySelector('.popup__place-title');
-const galleryPopup = document.querySelector('.popup__gallery-popup');
-const galleryShow = document.querySelector('#show');
 const popupArray = Array.from(document.querySelectorAll('.popup'));
+//****************//
+const closeButtons = Array.from(document.querySelectorAll('.popup__close'));
+//****************//
 //**************** New code for Sprint 7***********************//
+//Большое спасибо за подробные обяъснения! Все было очень детально, логично и понятно) Надеюсь, я все поняла верно)
+// Извините, что не сделала "nice-to-have" пункты - не успеваю(
 import Card from './Card.js';
 import {FormValidator, settings} from './FormValidator.js';
 
 const formValidatorEdit = new FormValidator(settings, document.getElementById('profile-edit'));
 formValidatorEdit.enableValidation();
+
 const formValidatorAdd = new FormValidator(settings, document.getElementById('add-card'));
 formValidatorAdd.enableValidation();
+
+closeButtons.forEach((closeButton) => {
+    closeButton.addEventListener('click', (e) => {
+        closePopup(e.target.closest('.popup'));
+    })
+});
+
 //**************** End of code for Sprint 7***********************//
 
 //**************** New code for Sprint 6***********************//
 function addEscListener(event) {
     if (event.key === "Escape") {
-        // galleryShow.classList.remove('popup_is-opened');
-        cardAdd.classList.remove('popup_is-opened');
-        popupEdit.classList.remove('popup_is-opened');
+        const openedPopup = document.querySelector('.popup_is-opened');
+        closePopup(openedPopup);
     }
+}
+
+function closePopup(openedPopup){
+    openedPopup.classList.remove('popup_is-opened');
+    document.removeEventListener('keydown', addEscListener);
 }
 
 popupArray.forEach(addCloseOverlayListeners);
@@ -44,7 +55,7 @@ function addCloseOverlayListeners(popup) {
     popup.addEventListener('click', function (evt) {
         if (evt.target.classList.contains('popup')) {
             evt.stopImmediatePropagation();
-            evt.target.classList.remove('popup_is-opened');
+            closePopup(evt.target)
         }
     })
 }
@@ -78,66 +89,38 @@ const initialCards = [
     }
 ];
 
-const cardTemplate = document.getElementById('card-template');
 const galleryGrid = document.querySelector('.gallery__grid');
 const addButon = document.querySelector('.profile__addbutton');
 
 initialCards.forEach((item) => {
-    const card = new Card(item, '.card-template');
+    const card = createCard(item);
     const cardElement = card.generate();
     galleryGrid.appendChild(cardElement);
 });
 
 
 addButon.addEventListener('click', (e) => {
+    formValidatorAdd.resetValidation();
     openPopup(cardAdd);
 })
 
-buttonAddClose.addEventListener('click', (e) => {
-    closePopup(cardAdd);
-})
-
-function createNewCard(name, link) {
-    const newCard = cardTemplate.content.firstElementChild.cloneNode(true);
-    newCard.querySelector('.gallery__title').textContent = name;
-    newCard.querySelector('.gallery__image').setAttribute('src', link);
-    newCard.querySelector('.gallery__image').setAttribute('alt', name);
-    addCardListeners(newCard);
-    return newCard;
-}
-
 function addSubmitHandler(evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    const newCard = createNewCard(placeName.value, placeLink.value);
-    galleryGrid.prepend(newCard);
+    evt.preventDefault();
+    const cardData = {name: '', link: ''};
+    cardData.name = placeName.value;
+    cardData.link = placeLink.value;
+    galleryGrid.prepend(createCard(cardData).generate());
     closePopup(popupEdit);
+    placeName.value = '';
+    placeLink.value = '';
+    formValidatorAdd.resetValidation();
 }
 
-function addCardListeners(newCard) {
-    newCard.querySelector('.gallery__deletebutton').addEventListener('click', (e) => {
-        e.target.closest('.gallery__item').remove();
-    })
-    newCard.querySelector('.gallery__likebutton').addEventListener('click', (e) => {
-        e.target.classList.toggle('gallery__likebutton_is-active');
-    })
-    newCard.querySelector('.gallery__image').addEventListener('click', (e) => {
-        openPopup(galleryShow);
-        galleryPopup.setAttribute('src', e.target.getAttribute('src'));
-        popupAlt.innerText = e.target.getAttribute('alt');
-    })
+function createCard(item){
+    return new Card(item, '.card-template');
 }
-
-galleryPopupClose.addEventListener('click', (e) => {
-    closePopup(e.target.closest('#show'));
-})
 
 formAdd.addEventListener('submit', addSubmitHandler);
-
-function closePopup(popup) {
-    popup.classList.remove('popup_is-opened');
-    document.removeEventListener('keydown', addEscListener);
-
-}
 
 function openPopup(popup) {
     popup.classList.add('popup_is-opened');
@@ -165,9 +148,9 @@ buttonAddSave.addEventListener("click", (e) => {
 
 buttonEdit.addEventListener("click", copyInitialValuesAndOpenPopup);
 formEdit.addEventListener('submit', handleSubmitForm);
-buttonClose.addEventListener("click", (e) => {
-    closePopup(popupEdit);
-});
+
+export { openPopup };
+
 
 
 
